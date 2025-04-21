@@ -46,10 +46,21 @@ def register():
     UserService().create_user(name,email,hashed_pass)
     return jsonify({"message":"User created successfully"}),201
 
-@auth.route('/logout',methods=['POST'])
-def logout():
-    pass
+# @auth.route('/logout',methods=['POST'])
+# def logout():
+#     return jsonify({"message":"Logout successful"}),200
 
 @auth.route('/me',methods=['GET'])
 def user():
-    pass
+    token=request.headers.get('Authorization')
+    if not token:
+        return jsonify({"message":"Missing token"}),400
+    jwt_token=token.split(" ")[1]
+    jwt_data=jwt.decode(jwt_token, os.getenv('SECRET_KEY'), algorithms=['HS256'])
+    id=jwt_data.get("id")
+    if not id:
+        return jsonify({"message":"Missing fields"}),400
+    user=UserService().get_by_id(id=id)
+    if not user:
+        return jsonify({"message":"User not found"}),404
+    return jsonify({"user":user.serialize()}),200

@@ -1,0 +1,22 @@
+### login
+POST http://localhost:8000/api/auth/login
+content-type: application/json
+
+{
+	"email":"d@g.com",
+	"password":"damian"
+}
+
+### register
+POST http://localhost:8000/api/auth/register
+content-type: application/json
+
+{
+	"name":"Damian",
+	"email":"d@g.com",
+	"password":"damian"
+}
+
+### get me
+GET http://localhost:8000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFtaWFuIiwiZW1haWwiOiJkQGcuY29tIiwiaWQiOiI0Nzc2YjVkNC1mMGJmLTRiY2EtYTRhYi1kYTc2ZDk1MDY3ZWIiLCJpYXQiOjE3NDUwMDczMjl9.6wWRVyIRucf39xAy7iELCzQ_HdsXWJfw7Qbry_4_HWY
