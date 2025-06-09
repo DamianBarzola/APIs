@@ -10,6 +10,17 @@ def get_users():
     serialized_users=[user.serialize() for user in users]
     return jsonify(serialized_users),200
 
-@users.route('/<int:id>',methods=['GET'])
-def get_user(id:int):
-    return UserService().get_by_id(id)
+@users.route('/<id>',methods=['GET'])
+def get_user(id:str):
+
+    user=UserService().get_by_id(id)
+    if user:
+        return jsonify(user.serialize()),200
+    else:
+        return jsonify({"message":"User not found"}),404
+    
+@users.route('/',methods=['POST'])
+def create_user():
+    data=request.json
+    user=UserService().create_user(data['name'],data['email'],data['password'])
+    return jsonify(user.serialize()),201

@@ -20,3 +20,9 @@ content-type: application/json
 ### get me
 GET http://localhost:8000/api/auth/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRGFtaWFuIiwiZW1haWwiOiJkQGcuY29tIiwiaWQiOiI0Nzc2YjVkNC1mMGJmLTRiY2EtYTRhYi1kYTc2ZDk1MDY3ZWIiLCJpYXQiOjE3NDUwMDczMjl9.6wWRVyIRucf39xAy7iELCzQ_HdsXWJfw7Qbry_4_HWY
+
+### obtener todos los usuarios
+GET http://localhost:8000/api/users/
+
+### obtener usuario por id
+GET http://localhost:8000/api/users/410544b2-4001-4271-9855-fec4b6a6442a
